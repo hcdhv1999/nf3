@@ -45,7 +45,6 @@ export const FlowStep: React.FC<Props> = ({icon, title, index, start, size, widt
   const {fps} = useVideoConfig();
   const pop = spring({frame: frame - start, fps, config: {damping: 14, mass: 0.7}});
   const draw = spring({frame: frame - start - 4, fps, config: {damping: 200}, durationInFrames: 22});
-  if (frame < start) return <div style={{width}} />;
 
   return (
     <div

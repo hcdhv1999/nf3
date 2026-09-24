@@ -26,7 +26,7 @@ export const Placeholder: React.FC<{label: string; asset: string}> = ({label, as
         ))}
       </svg>
       <div style={{color: COLORS.cream, fontWeight: 900, fontSize: 96, lineHeight: 1.3, opacity: 0.9}}>{label}</div>
-      <div style={{color: COLORS.cream, fontWeight: 400, fontSize: 26, opacity: 0.55, direction: 'ltr'}}>
+      <div style={{color: COLORS.cream, fontWeight: 400, fontSize: 26, opacity: 0.55, direction: 'ltr', marginTop: 24}}>
         public/{file}
       </div>
     </AbsoluteFill>
