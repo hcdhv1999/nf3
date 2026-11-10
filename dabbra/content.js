@@ -226,3 +226,59 @@ window.DABBRA_CONTENT = {
     growth: { icon: "🚀", name: "قفزة المعرفة" },
   },
 };
+
+/* ===================== عالم الحي والمهمات ===================== */
+Object.assign(window.DABBRA_CONTENT, {
+  goals: [
+    { id: "art", icon: "🎨", name: "عدة رسم احترافية", price: 100, level: 1 },
+    { id: "head", icon: "🎧", name: "سماعات لاسلكية", price: 150, level: 2 },
+    { id: "bike", icon: "🚲", name: "دراجة هوائية", price: 200, level: 3 },
+  ],
+
+  // الخريطة 30×20 بلاطة. x و y موضع المبنى، w و h حجمه، door عمود الباب (الباب دائمًا أسفل المبنى)
+  town: {
+    cols: 30, rows: 20,
+    buildings: [
+      { id: "home", name: "البيت", icon: "🏠", x: 1, y: 2, w: 4, h: 4, door: 2, roof: "#e07a5f", wall: "#fbe9d7", hint: "أعلى يسار الحي، سقفه برتقالي" },
+      { id: "bank", name: "بنك الادخار", icon: "🏦", x: 6, y: 2, w: 5, h: 4, door: 8, roof: "#1b2d66", wall: "#e8eefc", hint: "بجانب البيت، سقفه كحلي" },
+      { id: "grocery", name: "البقالة", icon: "🛒", x: 12, y: 2, w: 6, h: 4, door: 14, roof: "#36b871", wall: "#eafaf1", awning: "#36b871", hint: "منتصف الشارع العلوي، سقفها أخضر ولها مظلة" },
+      { id: "net", name: "محل النت", icon: "💻", x: 19, y: 2, w: 4, h: 4, door: 20, roof: "#7c5cff", wall: "#efeaff", hint: "بعد البقالة، سقفه بنفسجي" },
+      { id: "dream", name: "متجر الأحلام", icon: "🎯", x: 24, y: 2, w: 5, h: 4, door: 26, roof: "#f6c443", wall: "#fff6dc", awning: "#f6c443", hint: "آخر الشارع العلوي يمينًا، سقفه ذهبي" },
+      { id: "services", name: "مركز الفواتير", icon: "🧾", x: 2, y: 11, w: 5, h: 4, door: 4, roof: "#1fb1ac", wall: "#e5f8f7", hint: "الشارع السفلي يسارًا، سقفه تركوازي" },
+      { id: "workshop", name: "ورشة الإصلاح", icon: "🔧", x: 18, y: 11, w: 5, h: 4, door: 20, roof: "#8a8f9c", wall: "#eef0f4", hint: "الشارع السفلي بعد التقاطع، سقفها رمادي" },
+      { id: "restaurant", name: "مطعم البرجر", icon: "🍔", x: 24, y: 11, w: 5, h: 4, door: 26, roof: "#ee6464", wall: "#fdeeee", awning: "#ee6464", hint: "الشارع السفلي يمينًا، سقفه أحمر" },
+    ],
+    npcs: [
+      { id: "friend", name: "صديقك فهد", x: 27, y: 15, gender: "m", body: "#3b82c4", cap: "#1fb1ac", mission: "friend", bubble: "🍔" },
+      { id: "seller", name: "بائع الأحذية", x: 9, y: 18, gender: "m", body: "#8a5a2b", cap: "#5b3a1a", mission: "shoes", bubble: "👟", cart: "🛍️" },
+      { id: "stranger", name: "الشخص الغريب", x: 11, y: 13, gender: "m", body: "#3d3d46", cap: "#22222a", mission: "stranger", bubble: "❓" },
+    ],
+    stars: [[6, 7], [11, 6], [17, 9], [23, 6], [28, 9], [13, 12], [16, 13], [8, 13], [12, 10], [3, 16], [14, 17], [22, 16], [27, 18], [1, 9], [19, 18], [7, 10]],
+  },
+
+  // المهمات: place مبنى أو npc شخصية. needs ما يجب إنجازه قبلها. hidden تظهر فجأة.
+  missions: [
+    { id: "home", icon: "🏠", title: "استلم مصروف الشهر", place: "home", desc: "أمك تنتظرك في البيت ومعها مصروفك." },
+    { id: "bank", icon: "🏦", title: "وزّع مصروفك على الجِرار", place: "bank", needs: ["home"], desc: "قبل أي صرف، قسّم مصروفك في بنك الادخار.", badge: "planner" },
+    { id: "grocery", icon: "🛒", title: "اشترِ مقاضي الأسبوع", place: "grocery", needs: ["bank"], desc: "تجوّل بين الرفوف، وقارن الأسعار، وادفع عند الكاشير قبل انتهاء الوقت.", badge: "shopper" },
+    { id: "bills", icon: "🧾", title: "رتّب فواتير البيت", place: "services", needs: ["bank"], desc: "أسرتك سلّمتك ميزانية البيت لهذا اليوم.", badge: "manager" },
+    { id: "friend", icon: "🍔", title: "صديقك يناديك", npc: "friend", needs: ["bank"], desc: "فهد يقف أمام مطعم البرجر ويلوّح لك." },
+    { id: "net", icon: "💻", title: "محل النت: عرض ورسائل", place: "net", needs: ["bank"], desc: "في محل النت عرض مغرٍ، ورسائل تحتاج عينًا يقظة.", badge: "shield" },
+    { id: "grandma", icon: "🎁", title: "جدتك في البيت", place: "home", needs: ["bank"], desc: "جدتك جاءت لزيارتكم ومعها مفاجأة." },
+    { id: "shoes", icon: "👟", title: "بائع «آخر قطعة»", npc: "seller", needs: ["bank"], desc: "بائع متجول في الشارع السفلي ينادي على عرض." },
+    { id: "stranger", icon: "🕵️", title: "شخص غريب في الحديقة", npc: "stranger", needs: ["bank"], desc: "شخص لا تعرفه يقف قرب النافورة ويريد محادثتك." },
+    { id: "repair", icon: "🔧", title: "طوارئ! إلى الورشة", place: "workshop", needs: ["bank"], hidden: true, desc: "حدث عطل مفاجئ. اذهب إلى ورشة الإصلاح.", badge: "ready" },
+    { id: "deposit", icon: "🐷", title: "أودِع ما تبقى معك", place: "bank", needs: ["grocery", "bills", "friend", "net", "grandma", "shoes", "stranger", "repair"], desc: "انتهى الشهر. ارجع إلى البنك وقرّر ماذا تفعل بما بقي معك.", badge: "saver" },
+    { id: "dream", icon: "🎯", title: "متجر الأحلام", place: "dream", needs: ["deposit"], desc: "حان الوقت! هل حصالتك تكفي لهدفك؟" },
+  ],
+
+  stranger: {
+    icon: "🕵️", title: "شخص غريب", skill: "fraud",
+    text: "«مرحبًا! أنا من شركة الألعاب. أعطني رقم جوال والدك والرمز الذي سيصله، وأشحن لك 5000 جوهرة مجانًا!»",
+    options: [
+      { text: "أرفض وأبتعد وأخبر والديّ", score: 2, feedback: "تصرف الأبطال! لا أحد يحتاج رمزك ليعطيك هدية." },
+      { text: "أعطيه الرقم فقط بدون الرمز", score: 0.5, feedback: "حتى رقم الجوال معلومة شخصية يستغلها المحتال للوصول إلى أهلك." },
+      { text: "أعطيه الرقم والرمز لأحصل على الجواهر", score: 0, feedback: "بهذا الرمز يستطيع سحب مال والدك! لا تشارك الرمز أبدًا." },
+    ],
+  },
+});
